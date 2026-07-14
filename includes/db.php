@@ -1,9 +1,9 @@
 <?php
 
 $DB_HOST = "localhost";
-$DB_NAME = "gamesaw";
-$DB_USER = "root";
-$DB_PASS = "";
+$DB_NAME = "s6520241";
+$DB_USER = "s6520241";
+$DB_PASS = "francesco123";
 $dsn = "mysql:host=$DB_HOST;dbname=$DB_NAME;charset=utf8mb4";
 
 $options = [
