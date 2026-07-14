@@ -1,3 +1,3 @@
 <?php
 
-$BASE = '/gameSAW';
+$BASE = '/~s6520241/gameSAW';
