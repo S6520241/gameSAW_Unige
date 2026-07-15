@@ -1,7 +1,7 @@
--- CREATE DATABASE IF NOT EXISTS gamesaw
---   CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS gamesaw
+   CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
--- USE gamesaw;
+ USE gamesaw;
 
 CREATE TABLE IF NOT EXISTS users (
   id INT AUTO_INCREMENT PRIMARY KEY,

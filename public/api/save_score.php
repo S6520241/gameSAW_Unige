@@ -22,17 +22,21 @@ try {
     VALUES (:uid, :score, :moves, :time_sec, :diff)
   ");
   $stmt->execute([
-    ":uid" => $uid,
-    ":score" => $score,
-    ":moves" => $moves,
-    ":time_sec" => $time,
-    ":diff" => $diff
-  ]);
+      ":uid" => $uid,
+      ":score" => $score,
+      ":moves" => $moves,
+      ":time_sec" => $time,
+      ":diff" => $diff
+    ]);
 
-  header("Location: $BASE/public/leaderboard.php");
-  exit;
+    // Rispondiamo a Fetch con un successo (Status 200 OK)
+    http_response_code(200);
+    echo json_encode(["status" => "success"]);
+    exit;
 
-} catch (Exception $e) {
-  header("Location: $BASE/public/game.php");
-  exit;
-}
+  } catch (Exception $e) {
+    // In caso di errore nel database, rispondiamo con un codice di errore (Status 500)
+    http_response_code(500);
+    echo json_encode(["status" => "error", "message" => "Database error"]);
+    exit;
+  }

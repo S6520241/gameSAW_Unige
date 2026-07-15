@@ -170,12 +170,30 @@
 
     setMessage(`Hai vinto! Score: ${finalScore}. Salvo il punteggio...`);
 
-    // invia al server
-    scoreField.value = String(finalScore);
-    movesField.value = String(moves);
-    timeField.value = String(timeSec);
+    // invia al server tramite Fetch API
+    setTimeout(() => {
+      const formData = new FormData();
+      formData.append("score", finalScore);
+      formData.append("moves", moves);
+      formData.append("time_sec", timeSec);
+      formData.append("difficulty", diffSel.value);
 
-    setTimeout(() => scoreForm.submit(), 600);
+      fetch("api/save_score.php", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+            window.location.href = "leaderboard.php";
+          } else {
+            setMessage("Errore durante il salvataggio del punteggio.");
+          }
+        })
+        .catch(error => {
+          console.error("Errore Fetch:", error);
+          setMessage("Errore di connessione.");
+        });
+      }, 600);
   }
 
   function tryMove(dr, dc) {
